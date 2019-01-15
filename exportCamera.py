@@ -45,7 +45,9 @@ class exportCamera(OpenMayaMPx.MPxCommand):
         view = camera.viewDirection()
         up = camera.upDirection()
         rt = camera.rightDirection()
+        fov = float(cmds.camera(camera.name(), q=True, horizontalFieldOfView=True))
         ret = {'name': camera.name(),
+                'fieldOfView': fov,
                 'eye': listify(eye, offset),
                 'viewDirection': listify(view),
                 'upDirection': listify(up),
